@@ -1,0 +1,28 @@
+---
+title: "p8105_hw1_ym3197"
+author: "Yichaun Ma"
+date: "2026-09-24"
+output: github_document
+---
+```{r}
+library(tidyverse)
+```
+##Problem 1
+import dataset
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+
+The `penguins` dataset describes a sample of penguins and includes information on species, island, various body measurements (including bill length (mm), bill depth (mm), flipper length (mm), and body mass(g)), sex, and year. The dataset contains `r nrow(penguins)` rows and `r ncol(penguins)` columns. The mean flipper length is `r mean(penguins$flipper_length_mm, na.rm = TRUE) %>% round(1)` mm.
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
