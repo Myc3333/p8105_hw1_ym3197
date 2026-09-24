@@ -21,7 +21,6 @@ Now we create a scatter
 ggplot(data = penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
   geom_point() +
   theme_minimal()
-  )
 ```
 save the plot
 ```{r}
@@ -29,6 +28,32 @@ save the plot
 ggsave("penguin_plot.jpg")
 ```
 
+## Problem 2
 ```{r}
+df <- 
+  tibble(
+    sample_normal = rnorm(10),
+    logical_vector = sample_normal > 0,
+    character_vector = character(10),
+    factor_vector= factor(c("small", "small", "small", "medium", "medium", "medium", "medium", "large", "large", "large"))
+)
+```
+
+Try to take the mean 
+```{r}
+mean(pull(df, sample_normal))
+mean(pull(df, logical_vector))
+mean(pull(df, character_vector))
+mean(pull(df, factor_vector))
+```
+
+sample_normal and logical_vector can be averaged because they are numeric and logical (0/1) vectors, respectively. Character and factor vectors, however, cannot be averaged. A potential solution might be to convert (coerce) these variables to a different data type.
+```{r convert, results = 'hide'}
+
+as.numeric(pull(df, sample_normal))
+as.numeric(pull(df, character_vector))
+as.numeric(pull(df, logical_vector))
+
 
 ```
+This enables us to compute the mean for factor_vector since factor levels are mapped to integers based on their alphabetical sequence. Conversely, this approach fails for character_vector, as character vectors cannot be directly coerced into numeric values.
